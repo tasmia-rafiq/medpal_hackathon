@@ -122,7 +122,17 @@ const OcrReader = () => {
         Upload Your Medical Report Image
       </h2>
 
-      <input type="file" onChange={handleImageChange} accept="image/*" />
+      <div className="flex items-center gap-4">
+      <label className=" w-[120px] text-sm font-medium text-gray-900 bg-blue-200 px-2 py-1 rounded">Upload file</label>
+
+      
+      <input type="file" className="cursor-pointer w-[800px] py-1 text-sm text-gray-900 border border-gray-500 rounded-lg 
+       bg-gray-50 dark:text-gray-400 focus:outline-none hover:bg-gray-200
+      dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 " id="file_input" onChange={handleImageChange} accept="image/*" />
+      </div>
+      
+      
+      
       <button
         onClick={readImageText}
         className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
