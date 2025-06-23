@@ -4,7 +4,7 @@ import { signIn , signOut} from "@/auth";
 import { redirect } from "next/navigation";
 
 export async function signInWithGoogle() {
-    await signIn("google", { redirectTo: "/dashboard" });
+    await signIn("google", { redirectTo: "/upload" });
 }
 
 export async function signOutSession() {

@@ -58,7 +58,7 @@ const Home = async () => {
 
           <div className="mt-8">
             <Link
-              href={session?.user ? "/dashboard" : "/signin"}
+              href={session?.user ? "/upload" : "/signin"}
               className="primary_btn bg-white! text-black! flex items-center w-fit gap-2"
             >
               <span>Get Started</span>
@@ -168,7 +168,7 @@ const Home = async () => {
           health vault.
         </p>
         <Link
-          href={session?.user ? "/dashboard" : "/signin"}
+          href={session?.user ? "/upload" : "/signin"}
           className="primary_btn bg-secondary! text-black! px-6 py-3 rounded-lg font-medium inline-flex gap-2 items-center"
         >
           <span>Launch Dashboard</span>
