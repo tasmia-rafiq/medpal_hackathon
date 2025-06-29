@@ -33,6 +33,16 @@ const Header = async () => {
                 Dashboard
               </Link>
 
+
+              {/* zehra added new page */}
+
+                            <Link
+                href={"/rag"}
+                className="primary_btn !text-[16px] !bg-white !text-black-100 flex items-center gap-2"
+              >
+                Use Rag
+              </Link>
+
               <form action={signOutSession}>
                 <button type="submit">Logout</button>
               </form>
