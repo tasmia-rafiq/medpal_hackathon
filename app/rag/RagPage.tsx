@@ -2,7 +2,6 @@
 "use client";
 
 import { useState } from "react";
-import User from "@/models/User";
 
 export default function RagPage({ userId }: { userId: string }) {
   const [pdfFile, setPdfFile] = useState<File | null>(null);

@@ -1,10 +1,15 @@
 // app/dashboard/page.tsx
 import { connectToDatabase } from "@/lib/database";
 import User from "@/models/User";
-import Report from "@/models/Report";
 import { auth } from "@/auth";
 import PdfReport from "@/models/PdfReport";
 import PdfViewer from "@/components/PdfViewer";
+
+interface IPdfReport {
+  _id: string;
+  filename: string;
+  createdAt: Date;
+}
 
 const Page = async () => {
   const session = await auth();
@@ -45,7 +50,7 @@ const Page = async () => {
         <p>No reports found.</p>
       ) : (
         <ul className="space-y-4">
-          {reports.map((report: any) => (
+          {reports.map((report: IPdfReport) => (
             <li key={report._id} className="p-4 border rounded shadow">
               <div>
                 <h3 className="font-semibold text-xl">{report.filename}</h3>

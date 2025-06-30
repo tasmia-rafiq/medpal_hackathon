@@ -18,7 +18,7 @@ export async function GET(
     const buf: Buffer =
       pdfDoc.data instanceof Buffer
         ? pdfDoc.data
-        : Buffer.from((pdfDoc.data as any).buffer);
+        : Buffer.from((pdfDoc.data as { buffer: ArrayBuffer }).buffer);
 
     // Convert Buffer to ReadableStream
     const stream = new Readable({
@@ -28,7 +28,7 @@ export async function GET(
       },
     });
 
-    return new Response(stream as any, {
+    return new Response(stream as ReadableStream, {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",

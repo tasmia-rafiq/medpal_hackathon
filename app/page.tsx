@@ -1,5 +1,4 @@
 import Link from "next/link";
-import OcrReader from "@/components/OcrReader";
 import Image from "next/image";
 import { ArrowRight, Brain, FileText, Shield, TrendingUp } from "lucide-react";
 import { auth } from "@/auth";

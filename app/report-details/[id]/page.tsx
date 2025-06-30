@@ -15,8 +15,6 @@ export default async function ReportDetailsPage({
 
   if (!report || Array.isArray(report) || !report.text) return notFound();
 
-  const lines = report.text.split("\n").filter(Boolean);
-
   const formatted = report.formattedText;
 
   return (
@@ -26,16 +24,6 @@ export default async function ReportDetailsPage({
         <p className="text-sm text-gray-500">
           Uploaded on {new Date(report.createdAt).toLocaleString()}
         </p>
-
-        {/* <table className="w-full mt-4 border text-sm bg-white">
-          <tbody>
-            {lines.map((line: string, i: number) => (
-              <tr key={i} className="border-b">
-                <td className="py-2 px-3">{line}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table> */}
 
         <pre className="bg-gray-50 p-4 rounded">{`HELLO ${formatted}`}</pre>
       </div>

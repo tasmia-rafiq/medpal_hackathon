@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
     await connectToDatabase();
 
     // ---------- 2.  convert File -> Buffer ----------
-    const arrayBuffer = await file.arrayBuffer();   // ⬅️ Web API
+    const arrayBuffer = await file.arrayBuffer();   // ⬅️ Web API
     const buffer = Buffer.from(arrayBuffer);
 
     // ---------- 3.  save PDF ----------
@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
       pdfId: pdf._id.toString(),
       message: "PDF stored in MongoDB",
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("Upload error:", err);
     return NextResponse.json({ error: "Upload failed" }, { status: 500 });
   }
