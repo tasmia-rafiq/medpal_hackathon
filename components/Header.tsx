@@ -5,7 +5,14 @@ import { signOutSession } from "@/lib/auth-actions";
 import Image from "next/image";
 
 const Header = async () => {
-  const session = await auth();
+  let session = null;
+  
+  try {
+    session = await auth();
+  } catch (error) {
+    console.error("Auth error in Header:", error);
+    // Continue rendering without session if auth fails
+  }
 
   return (
     <header className="px-5 py-3 bg-white shadow-sm font-poppins">
@@ -33,10 +40,8 @@ const Header = async () => {
                 Dashboard
               </Link>
 
-
               {/* zehra added new page */}
-
-                            <Link
+              <Link
                 href={"/rag"}
                 className="primary_btn !text-[16px] !bg-white !text-black-100 flex items-center gap-2"
               >
