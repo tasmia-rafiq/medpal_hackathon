@@ -1,6 +1,5 @@
 # 🩺 MedPal
 
-**MedPal** is your personal medical buddy.  
 Don’t know where to store all your medical reports or how to access the right information when needed? Don’t worry — we’ve got you.
 
 MedPal simplifies complex medical jargon into easy-to-understand summaries. It checks whether your medical values fall within normal ranges and suggests actionable next steps, helping you seek timely assistance from medical professionals. It also organizes your reports and lets you query them when needed using a RAG (Retrieval-Augmented Generation) system.
