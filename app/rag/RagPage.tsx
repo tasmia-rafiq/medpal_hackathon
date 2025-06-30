@@ -5,63 +5,62 @@ import { useState } from "react";
 import User from "@/models/User";
 
 export default function RagPage({ userId }: { userId: string }) {
-
-  
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [chunksUsed, setChunksUsed] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
 
-
   const handleUpload = async () => {
-  if (!pdfFile) return;
+    if (!pdfFile) return;
 
-  const formData = new FormData();
-  formData.append("file", pdfFile);
-  formData.append("user_id", userId); // coming from props
+    const formData = new FormData();
+    formData.append("file", pdfFile);
+    formData.append("user_id", userId); // coming from props
 
-  try {
-    const res = await fetch("/api/upload", {
-      method: "POST",
-      body: formData,
-    });
+    try {
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
 
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || "Upload failed");
+      const data = await res.json();
+      if (data.success) {
+        alert("Upload saved in DB. PDF id: " + data.pdfId);
+      }
+      if (!res.ok) throw new Error(data.error || "Upload failed");
 
-    alert("Upload successful! Chunks processed: " + data.chunks);
-  } catch (err) {
-    console.error("Upload error:", err);
-    alert("Upload failed");
-  }
-};
+      alert("Upload successful! Chunks processed: " + data.chunks);
+    } catch (err) {
+      console.error("Upload error:", err);
+      alert("Upload failed");
+    }
+  };
 
-const handleAsk = async () => {
-  try {
-    setLoading(true);
-    setAnswer("");
+  const handleAsk = async () => {
+    try {
+      setLoading(true);
+      setAnswer("");
 
-    const response = await fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question }), // no userId
-    });
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question }), // no userId
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (!response.ok) throw new Error(data.error || "Query failed");
+      if (!response.ok) throw new Error(data.error || "Query failed");
 
-    setAnswer(data.answer);
-    setChunksUsed(data.chunks_used);
-  } catch (err) {
-    console.error("Ask error:", err);
-    alert("Failed to get answer.");
-  } finally {
-    setLoading(false);
-  }
-};
-
+      setAnswer(data.answer);
+      setChunksUsed(data.chunks_used);
+    } catch (err) {
+      console.error("Ask error:", err);
+      alert("Failed to get answer.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     // your existing UI
@@ -95,7 +94,9 @@ const handleAsk = async () => {
       </div>
 
       <div className="space-y-2">
-        <label className="text-sm font-medium text-gray-900">Ask a question</label>
+        <label className="text-sm font-medium text-gray-900">
+          Ask a question
+        </label>
         <input
           type="text"
           value={question}
@@ -116,7 +117,9 @@ const handleAsk = async () => {
         <div className="p-4 mt-4 border rounded-lg bg-gray-100">
           <h3 className="text-md font-semibold text-gray-800 mb-2">Answer:</h3>
           <p className="text-gray-700 whitespace-pre-line">{answer}</p>
-          <p className="text-sm text-gray-500 mt-2">Chunks used: {chunksUsed}</p>
+          <p className="text-sm text-gray-500 mt-2">
+            Chunks used: {chunksUsed}
+          </p>
         </div>
       )}
     </div>

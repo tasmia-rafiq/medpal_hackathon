@@ -20,9 +20,9 @@ const Header = async () => {
             <Link href={"/"} className="nav-menu">
               Home
             </Link>
-            <Link href={"/upload"} className="nav-menu">
+            {/* <Link href={"/upload"} className="nav-menu">
               Upload Report
-            </Link>
+            </Link> */}
           </div>
           {session && session?.user ? (
             <>
