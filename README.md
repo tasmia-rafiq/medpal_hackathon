@@ -1,36 +1,50 @@
 # 🩺 MedPal
-MedPal is your personal medical buddy. Got medical reports that don't make sense? Don’t worry — we’ve got your back.
 
-MedPal simplifies complex medical jargon into easy-to-understand summaries. It checks whether your medical values fall within normal ranges and suggests actionable next steps, helping you seek timely assistance from medical professionals.
+**MedPal** is your personal medical buddy.  
+Don’t know where to store all your medical reports or how to access the right information when needed? Don’t worry — we’ve got you.
 
-# 🧠 Key Features
+MedPal simplifies complex medical jargon into easy-to-understand summaries. It checks whether your medical values fall within normal ranges and suggests actionable next steps, helping you seek timely assistance from medical professionals. It also organizes your reports and lets you query them when needed using a RAG (Retrieval-Augmented Generation) system.
 
-- 📄 Medical Report Analysis
-Upload your medical reports, and let MedPal extract and interpret the values for you.
+---
 
-- 🔍 Range Evaluation
-Understand whether your results are within normal ranges.
+## 🧠 Key Features
 
-- 🗒️ Actionable Insights
-Receive simple next-step suggestions to consult the right healthcare professional.
+- **Medical Report Analysis**  
+  Upload your medical reports and let MedPal extract and interpret the values for you.
 
-# 🛠️ Tech Stack
-- Next.js – Frontend framework
+- **Range Evaluation**  
+  Understand whether your results fall within normal ranges.
 
-- OCR – Extracts data from scanned medical documents
+- **Actionable Insights**  
+  Receive easy-to-follow suggestions on next steps and which healthcare professionals to consult.
 
-- Meta-LLaMA – Used for natural language understanding and reasoning over extracted data
+- **Report Storage**  
+  Store all your reports in one place for easy access.
 
+---
 
-# 🚀 How It Works
--  Sign in with Google
-Quickly get started by signing in with your Google account.
+## 🛠️ Tech Stack
 
-- Upload an Image File
-Choose a scanned or photographed medical report to upload.
+### Frontend
+- **Next.js** – Frontend framework
 
-- Extract & Process (AI Magic Happens ✨)
-Let MedPal read and analyze the report using OCR and AI.
+### Backend
+- **Next.js** – Backend server (API routes)
+- **CohereAI** – Embeddings
+- **Qdrant** – Vector database for semantic search
+- **Groq** – Large Language Model (LLM) for generating answers
 
-- Save Report or Process Another
-View results, save your report, or upload another one for analysis.
+---
+
+## 🚀 How It Works
+
+1. **Sign in with Google**
+2. **Upload a PDF file**
+3. **Ask questions about your report** using RAG
+4. **View and manage your report history**
+
+---
+
+## 📦 Installation
+
+- [For environment setup to run locally](RUN.md)
