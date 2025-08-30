@@ -6,6 +6,10 @@ MedPal simplifies complex medical jargon into easy-to-understand summaries. It c
 
 ---
 
+## Demo Video 
+[Video](https://youtu.be/96GszsVYURY?si=DnkKhzl5yr3c2tUb)
+
+
 ## 🧠 Key Features
 
 - **Medical Report Analysis**  
